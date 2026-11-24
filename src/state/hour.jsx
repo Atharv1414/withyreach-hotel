@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useMemo, useState } from 'react'
+import { createContext, useContext, useEffect, useLayoutEffect, useMemo, useState } from 'react'
 import { inkOn, skyAt } from '../lib/sky.js'
 import { phase, solarElevation, sunTimes } from '../lib/sun.js'
 
@@ -34,10 +34,12 @@ export function HourProvider({ children, now = () => new Date() }) {
     }
   }, [clock, chosen])
 
-  useEffect(() => {
+  // before the first paint, so a night visitor never sees a flash of day
+  useLayoutEffect(() => {
     const root = document.documentElement
     root.dataset.theme = value.elevation > -3 ? 'light' : 'dark'
     root.dataset.phase = value.phase
+    root.dataset.hour = value.live ? 'live' : 'chosen'
     root.style.setProperty('--sky-top', value.sky.top)
     root.style.setProperty('--sky-low', value.sky.low)
     root.style.setProperty('--sky-ink', inkOn(value.sky.top))

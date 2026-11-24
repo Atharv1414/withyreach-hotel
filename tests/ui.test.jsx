@@ -89,6 +89,7 @@ describe('hour', () => {
     show('2026-12-01T12:00Z')
     expect(document.documentElement.dataset.theme).toBe('light')
     expect(document.documentElement.dataset.phase).toBe('day')
+    expect(document.documentElement.dataset.hour).toBe('live')
   })
 })
 

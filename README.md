@@ -27,7 +27,7 @@ People come to the Levels for the light and the winter starlings, so **the page 
 | Check | Covers |
 |---|---|
 | 42 unit and component tests | Sun times against almanac values, legibility of the navigation and heading at every sun height, date arithmetic across clock changes, prices, availability, calendar keyboard behaviour, booking from start to finish |
-| 12 browser tests (desktop and phone) | axe accessibility checks on all pages by day, dusk and night; no sideways scrolling; keyboard-only booking; deep links after a reload |
+| 14 browser tests (desktop and phone) | axe accessibility checks on all pages by day, dusk and night; no sideways scrolling; no flash of the wrong theme; keyboard-only booking; deep links after a reload |
 | ESLint and Stylelint | Both clean |
 
 The browser tests found real faults while I built this, now fixed: a list used as a tab panel, calendar buttons whose spoken name did not match their text, and a white heading that lost contrast just after sunset.

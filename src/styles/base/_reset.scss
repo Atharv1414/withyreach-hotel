@@ -6,6 +6,11 @@
 
 * { margin: 0; }
 
+// the page fades only when a visitor moves the sun, never while it loads
+[data-hour='chosen'] body {
+  @include motion-ok { transition: background-color 0.5s, color 0.5s; }
+}
+
 html { text-size-adjust: 100%; }
 
 body {
@@ -14,7 +19,6 @@ body {
   font: 400 #{fluid(16, 18)} / 1.6 var(--body);
   overflow-wrap: break-word;
 
-  @include motion-ok { transition: background-color 0.5s, color 0.5s; }
 }
 
 ul,

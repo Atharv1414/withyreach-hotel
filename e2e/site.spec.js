@@ -33,6 +33,14 @@ test('the dial moves the sun and the theme', async ({ page }) => {
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'light')
 })
 
+test('a night visitor gets the night page at once, with no fade', async ({ page }) => {
+  await page.clock.setFixedTime(new Date(HOURS.night))
+  await page.goto('/rooms')
+  await expect(page.locator('h1')).toBeVisible()
+  const now = await page.evaluate(() => [getComputedStyle(document.body).backgroundColor, getComputedStyle(document.body).transitionDuration])
+  expect(now).toEqual(['rgb(13, 26, 33)', '0s'])
+})
+
 test('a booking can be made with the keyboard alone', async ({ page }) => {
   await page.clock.setFixedTime(new Date(HOURS.day))
   await page.goto('/book?room=withy-boiler')
