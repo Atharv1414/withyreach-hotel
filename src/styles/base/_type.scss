@@ -1,0 +1,22 @@
+@use '../abstracts' as *;
+
+h1,
+h2 { font-family: var(--display); font-weight: 400; line-height: 1.04; text-wrap: balance; }
+
+h1 { font-size: fluid(44, 88); letter-spacing: -0.015em; }
+
+h2 { font-size: fluid(30, 46); letter-spacing: -0.01em; }
+
+h3 { font-size: 1.05rem; font-weight: 600; }
+
+p { max-width: 62ch; }
+
+.link {
+  color: var(--water);
+  padding: 0;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+
+  &:hover { text-decoration-thickness: 2px; }
+}

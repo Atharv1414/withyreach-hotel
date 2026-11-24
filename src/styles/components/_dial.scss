@@ -1,0 +1,46 @@
+@use '../abstracts' as *;
+
+.dial {
+  width: min(30rem, 100%);
+  background: color-mix(in srgb, var(--ground) 88%, transparent);
+  color: var(--ink);
+  padding: s(4) s(5) s(3);
+  border-radius: 2px;
+  backdrop-filter: blur(6px);
+
+  &__label { display: flex; flex-wrap: wrap; align-items: baseline; gap: s(1) s(3); }
+
+  &__time { font: 500 1.7rem var(--mono); font-variant-numeric: tabular-nums; }
+
+  &__foot { font-size: 0.9rem; color: var(--ink-2); }
+
+  // daylight is marked on the track between the real sunrise and sunset
+  &__track {
+    --day: color-mix(in oklab, var(--reed) 70%, var(--raised));
+
+    position: relative;
+    padding-block: s(2);
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 50% 0 auto;
+      height: 4px;
+      translate: 0 -50%;
+      background: linear-gradient(90deg, var(--ink-2) var(--rise), var(--day) var(--rise) var(--set), var(--ink-2) var(--set));
+    }
+  }
+
+  input {
+    appearance: none;
+    position: relative;
+    width: 100%;
+    height: 2rem;
+    background: transparent;
+    cursor: grab;
+
+    &::-webkit-slider-thumb { appearance: none; width: 1.5rem; height: 1.5rem; border-radius: 50%; background: var(--ink); border: 4px solid var(--ground); }
+
+    &::-moz-range-thumb { width: 1rem; height: 1rem; border-radius: 50%; background: var(--ink); border: 4px solid var(--ground); }
+  }
+}

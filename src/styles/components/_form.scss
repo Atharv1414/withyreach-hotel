@@ -1,0 +1,51 @@
+@use '../abstracts' as *;
+
+.fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: s(4);
+  margin-bottom: s(5);
+
+  label { display: grid; gap: s(1); flex: 1 1 12rem; font-size: 0.95rem; }
+
+  &--stack { display: grid; max-width: 28rem; }
+}
+
+select,
+input[type='text'],
+input[type='email'],
+input[type='tel'] {
+  width: 100%;
+  background: var(--raised);
+  border: 1px solid var(--ink-2);
+  border-radius: 2px;
+  padding: 0.6rem 0.75rem;
+
+  &[aria-invalid='true'] { border-color: var(--error); border-width: 2px; }
+}
+
+input[type='checkbox'],
+input[type='radio'] { width: 1.15rem; height: 1.15rem; accent-color: var(--water); flex: none; }
+
+.error { color: var(--error); font-weight: 500; }
+
+.actions { display: flex; flex-wrap: wrap; gap: s(3); margin-top: s(5); }
+
+.extras {
+  display: grid;
+  gap: s(3);
+
+  label {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: s(4);
+    align-items: center;
+    padding: s(4);
+    background: var(--raised);
+    border: 1px solid var(--rule);
+
+    &:has(:checked) { border-color: var(--water); }
+  }
+
+  b { font: 500 0.88rem var(--mono); }
+}

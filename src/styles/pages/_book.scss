@@ -1,0 +1,51 @@
+@use '../abstracts' as *;
+
+.book {
+  display: grid;
+  gap: s(6);
+
+  &__main { min-width: 0; }
+
+  form h2 { font-size: fluid(24, 32); margin-bottom: s(4); }
+
+  @include up(desktop) { grid-template-columns: 1fr 21rem; gap: s(8); }
+}
+
+// the steps really are a sequence, so they are numbered
+.steps {
+  counter-reset: step;
+  display: flex;
+  flex-wrap: wrap;
+  gap: s(2) s(5);
+  margin-block: s(4) s(5);
+  color: var(--ink-2);
+
+  li { counter-increment: step; display: flex; gap: s(2); }
+
+  li::before { content: counter(step); font-family: var(--mono); }
+
+  [aria-current] { color: var(--ink); font-weight: 600; }
+
+  button { padding: 0; text-decoration: underline; text-underline-offset: 0.2em; }
+}
+
+.bill {
+  background: var(--floor);
+  padding: s(5);
+  align-self: start;
+  font-variant-numeric: tabular-nums;
+
+  h2 { font-size: 1.7rem; margin-bottom: s(3); }
+
+  li,
+  &__total { display: flex; justify-content: space-between; gap: s(4); padding-block: s(1); }
+
+  li span:last-child,
+  &__total b { font-family: var(--mono); white-space: nowrap; }
+
+  &__total { border-top: 1px solid var(--ink-2); margin-top: s(3); padding-top: s(3); font-size: 1.15rem; }
+
+  &__small { color: var(--ink-2); font-size: 0.9rem; }
+
+  @include up(desktop) { position: sticky; top: s(5); }
+}

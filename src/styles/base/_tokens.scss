@@ -1,0 +1,41 @@
+// The page follows the sun over the hotel: 'light' while it is up, 'dark' once it is 3 degrees
+// below the horizon. --sky-* are set in script, to the colours of the scene at that hour.
+@use '../abstracts' as *;
+
+:root {
+  --ground: #edf2f1;
+  --raised: #fbfdfc;
+  --ink: #12262c;
+  --ink-2: #47595d;
+  --rule: #c5d2d1;
+  --water: #2c6474;
+  --reed: #7d5d0f;
+  --floor: #dfe9e8;
+  --solid: #17303a;
+  --on-solid: #f2f7f6;
+  --error: #a32a1c;
+  --focus: #2c6474;
+  --display: 'Libre Caslon Display', 'Times New Roman', serif;
+  --body: 'Hanken Grotesk Variable', system-ui, sans-serif;
+  --mono: 'Spline Sans Mono Variable', ui-monospace, monospace;
+  --gutter: max(1.15rem, env(safe-area-inset-left, 0px));
+
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --ground: #0d1a21;
+  --raised: #13242c;
+  --ink: #e6efed;
+  --ink-2: #a3b6b7;
+  --rule: #2b414a;
+  --water: #85bccb;
+  --reed: #dcb45a;
+  --floor: #1a303a;
+  --solid: #dcb45a;
+  --on-solid: #14211f;
+  --error: #ff9d8b;
+  --focus: #dcb45a;
+
+  color-scheme: dark;
+}

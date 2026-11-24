@@ -1,0 +1,54 @@
+@use '../abstracts' as *;
+
+.cal {
+  background: var(--raised);
+  border: 1px solid var(--rule);
+  padding: s(4);
+  max-width: 40rem;
+
+  &__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: s(3);
+
+    button { width: 2.75rem; height: 2.75rem; border: 1px solid var(--rule); }
+
+    button:disabled { opacity: 0.35; cursor: default; }
+  }
+
+  &__hint { margin-top: s(3); min-height: 3.2em; color: var(--ink-2); }
+
+  table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+
+  th { font: 500 0.78rem var(--mono); color: var(--ink-2); padding-bottom: s(2); }
+
+  abbr { text-decoration: none; }
+
+  td { padding: 1px 0; }
+
+  td button {
+    position: relative;
+    width: 100%;
+    min-height: 3.4rem;
+    padding: s(1) 0;
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    line-height: 1.2;
+    font-variant-numeric: tabular-nums;
+
+    &:hover:not([aria-disabled='true']) { background: var(--floor); }
+
+    &:focus-visible { outline-offset: -2px; }
+
+    &[aria-disabled='true'] { color: var(--ink-2); text-decoration: line-through; opacity: 0.55; cursor: not-allowed; }
+  }
+
+  small { font: 0.66rem var(--mono); color: var(--ink-2); min-height: 1em; }
+
+  .is-inside button { background: var(--floor); }
+
+  .is-edge button,
+  .is-edge button:hover:not([aria-disabled='true']) { background: var(--solid); color: var(--on-solid); opacity: 1; text-decoration: none; }
+}

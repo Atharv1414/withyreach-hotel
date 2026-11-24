@@ -1,0 +1,23 @@
+@use '../abstracts' as *;
+
+.eat {
+  display: grid;
+  gap: s(6);
+
+  &__lead { margin-block: s(4) s(5); }
+
+  @include up(desktop) { grid-template-columns: 1fr 1.3fr; gap: s(8); }
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: s(2);
+
+  button {
+    padding: s(2) s(4);
+    border: 1px solid var(--rule);
+
+    &[aria-selected='true'] { background: var(--solid); color: var(--on-solid); border-color: var(--solid); }
+  }
+}

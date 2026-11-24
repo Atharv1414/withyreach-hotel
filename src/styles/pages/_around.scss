@@ -1,0 +1,72 @@
+@use '../abstracts' as *;
+
+.around {
+  display: grid;
+  gap: s(6);
+
+  &__text { display: grid; gap: s(5); align-content: start; }
+
+  &__note { display: grid; gap: s(2); min-height: 8rem; }
+
+  @include up(desktop) { grid-template-columns: 1fr 1.6fr; gap: s(7); }
+}
+
+.walks {
+  border: 0;
+  padding: 0;
+  display: grid;
+
+  legend { margin-bottom: s(3); color: var(--ink-2); }
+
+  label {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: s(3);
+    align-items: center;
+    padding: s(3) 0;
+    border-top: 1px solid var(--rule);
+    cursor: pointer;
+  }
+
+  &__name { font-family: var(--display); font-size: 1.5rem; line-height: 1.2; }
+
+  &__meta { font: 0.85rem var(--mono); color: var(--ink-2); }
+}
+
+.map {
+  width: 100%;
+  border: 1px solid var(--rule);
+
+  &__land { fill: var(--floor); }
+
+  &__rhyne { stroke: color-mix(in oklab, var(--water) 45%, var(--floor)); stroke-width: 0.28; fill: none; }
+
+  &__river { stroke: var(--water); stroke-width: 2.4; fill: none; opacity: 0.75; }
+
+  &__lake { fill: color-mix(in oklab, var(--water) 35%, var(--floor)); stroke: var(--water); stroke-width: 0.3; }
+
+  &__hill { fill: none; stroke: var(--reed); stroke-width: 0.35; }
+
+  &__home { fill: var(--ink); }
+
+  &__names text { font: 500 2.3px var(--mono); fill: var(--ink); paint-order: stroke; stroke: var(--floor); stroke-width: 0.9; }
+
+  &__walk {
+    fill: none;
+    stroke: var(--error);
+    stroke-width: 0.7;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+
+    @include motion-ok {
+      stroke-dasharray: 1;
+      animation: draw 1.1s ease-out both;
+    }
+  }
+}
+
+@keyframes draw {
+  from { stroke-dashoffset: 1; }
+
+  to { stroke-dashoffset: 0; }
+}

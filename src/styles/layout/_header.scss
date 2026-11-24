@@ -1,0 +1,81 @@
+@use '../abstracts' as *;
+
+.skip {
+  position: absolute;
+  left: var(--gutter);
+  top: -4rem;
+  z-index: 30;
+  background: var(--solid);
+  color: var(--on-solid);
+  padding: s(2) s(4);
+
+  &:focus { top: s(2); }
+}
+
+.mark { width: 1.6rem; height: 1.6rem; }
+
+.header {
+  position: relative;
+  z-index: 20;
+
+  &__in {
+    max-width: 82rem;
+    margin: 0 auto;
+    padding: s(4) var(--gutter);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: s(3) s(5);
+  }
+
+  &__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: s(2);
+    font-family: var(--display);
+    font-size: 1.5rem;
+    text-decoration: none;
+  }
+
+  &__toggle { padding: s(2) s(3); border: 1px solid currentcolor; border-radius: 2px; }
+
+  &__nav {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: s(3);
+
+    a:not(.button) {
+      text-decoration: none;
+      padding: s(2) 0;
+      border-bottom: 2px solid transparent;
+
+      &:hover,
+      &.active { border-color: currentcolor; }
+    }
+  }
+
+  &.is-open &__nav { display: flex; }
+
+  // on the home page the header floats over the scene and takes its ink from the sky
+  &--over {
+    position: absolute;
+    inset: 0 0 auto;
+    color: var(--sky-ink);
+  }
+
+  &--over.is-open { background: var(--ground); color: var(--ink); }
+
+  @include up(tablet) {
+    &__toggle { display: none; }
+
+    &__nav {
+      display: flex;
+      width: auto;
+      flex-direction: row;
+      align-items: center;
+      gap: s(5);
+    }
+  }
+}

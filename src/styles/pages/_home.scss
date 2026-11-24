@@ -1,0 +1,82 @@
+@use '../abstracts' as *;
+
+.hero {
+  position: relative;
+  min-height: min(52rem, 92svh);
+  display: grid;
+  overflow: hidden;
+  background: linear-gradient(var(--sky-top), var(--sky-low));
+
+  .marsh { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+  &__in {
+    position: relative;
+    width: 100%;
+    max-width: 82rem;
+    margin: 0 auto;
+    padding: 6.5rem var(--gutter) s(6);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: s(6);
+  }
+
+  h1 { max-width: 11ch; color: var(--sky-ink); font-size: fluid(48, 116); line-height: 0.96; }
+}
+
+.lead {
+  display: grid;
+  gap: s(6);
+  padding-block: fluid(48, 112);
+
+  &__text { font-family: var(--display); font-size: fluid(25, 40); line-height: 1.28; max-width: 30ch; }
+
+  @include up(desktop) { grid-template-columns: 1.7fr 1fr; gap: s(8); align-items: end; }
+}
+
+// column widths follow the rooms' real widths, so the three plans share one scale
+.strip {
+  display: grid;
+  gap: s(6) s(5);
+
+  &__item { min-width: 0; width: calc(var(--span) * 10%); }
+
+  a { display: block; text-decoration: none; }
+
+  &__name { display: block; font-family: var(--display); font-size: 1.7rem; margin-top: s(2); }
+
+  &__meta { color: var(--ink-2); }
+
+  a:hover .strip__name { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.15em; }
+
+  @include up(tablet) { display: flex; align-items: flex-end; }
+
+  @include up(tablet) { &__item { flex: var(--span) 1 0; width: auto; } }
+}
+
+.table-band {
+  background: var(--floor);
+  margin-top: fluid(56, 120);
+
+  &__in {
+    display: grid;
+    gap: s(6);
+    padding-block: fluid(44, 88);
+
+    > div { display: grid; gap: s(4); justify-items: start; align-content: start; }
+
+    @include up(desktop) { grid-template-columns: 1fr 1.1fr; gap: s(8); }
+  }
+
+  .dishes li { border-color: color-mix(in oklab, var(--ink) 22%, transparent); }
+}
+
+.closing {
+  padding-block: fluid(64, 140) fluid(16, 40);
+  display: grid;
+  gap: s(5);
+  justify-items: start;
+
+  h2 { font-size: fluid(38, 76); max-width: 16ch; }
+}

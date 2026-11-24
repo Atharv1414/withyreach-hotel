@@ -1,0 +1,33 @@
+// Drawn like a surveyor's plan. Strokes are in metres, because the viewBox is.
+.plan {
+  width: 100%;
+  height: auto;
+
+  &__wall { fill: var(--ink); }
+
+  &__floor { fill: var(--floor); }
+
+  &__window { fill: var(--sky-low); stroke: var(--ink); stroke-width: 0.03; }
+
+  &__inner { stroke: var(--ink); stroke-width: 0.14; }
+
+  &__fit {
+    rect { fill: var(--raised); stroke: var(--ink-2); stroke-width: 0.035; }
+
+    path { stroke: var(--ink-2); stroke-width: 0.03; fill: none; }
+
+    circle { fill: var(--ink-2); }
+
+    text { font: 0.22px var(--mono); fill: var(--ink-2); text-anchor: middle; }
+
+    &--bath rect { fill: color-mix(in oklab, var(--water) 28%, var(--raised)); }
+
+    &--stove rect { fill: var(--ink-2); }
+  }
+
+  &__dims {
+    path { stroke: var(--ink-2); stroke-width: 0.025; fill: none; }
+
+    text { font: 0.26px var(--mono); fill: var(--ink); text-anchor: middle; paint-order: stroke; stroke: var(--ground); stroke-width: 0.24; }
+  }
+}

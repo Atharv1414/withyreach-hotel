@@ -1,0 +1,47 @@
+@use '../abstracts' as *;
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+* { margin: 0; }
+
+html { text-size-adjust: 100%; }
+
+body {
+  background: var(--ground);
+  color: var(--ink);
+  font: 400 #{fluid(16, 18)} / 1.6 var(--body);
+  overflow-wrap: break-word;
+
+  @include motion-ok { transition: background-color 0.5s, color 0.5s; }
+}
+
+ul,
+ol { list-style: none; padding: 0; }
+
+button,
+input,
+select { font: inherit; color: inherit; }
+
+button { background: none; border: 0; cursor: pointer; }
+
+svg,
+canvas { display: block; max-width: 100%; }
+
+a { color: inherit; }
+
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+main:focus,
+h1:focus,
+h2:focus { outline: none; }
+
+:focus-visible { @include focus-ring; }
